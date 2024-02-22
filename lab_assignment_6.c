@@ -3,6 +3,34 @@
 int search(int numbers[], int low, int high, int value) 
 {
 	return -1;
+/////////////////////////////////////
+
+int binarySearch(int numbers[], int low, int high, int value) {
+    if (low > high ) {
+        
+        return -1;
+		// to sub mid into the index
+    }
+int mid = (low + high) / 2;
+
+    if (numbers[mid] == value) {
+        // Found the value
+        return mid;
+    } else if (numbers[mid] < value) {
+        // Search in the right half
+        return binarySearch(numbers, mid + 1, high, value);
+    } else {
+        // Search in the left half
+        return binarySearch(numbers, low, mid - 1, value);
+    }
+}
+
+int search(int numbers[], int low, int high, int value) {
+    // Call binary search within the specified range
+    return binarySearch(numbers, low, high, value);
+}
+
+/////////////////////////////////////////	
 }
 
 void printArray(int numbers[], int sz)
